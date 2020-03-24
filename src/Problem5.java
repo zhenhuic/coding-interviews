@@ -6,8 +6,6 @@ public class Problem5 {
      * 2. 在当前字符串替换，怎么替换才更有效率（不考虑java里现有的replace方法）,
      * 从前往后替换，后面的字符要不断往后移动，要多次移动，所以效率低下,
      * 从后往前，先计算需要多少空间，然后从后往前移动，则每个字符只为移动一次，这样效率更高一点。
-     * @param str
-     * @return
      */
     public String replaceSpace(StringBuffer str) {
         if (str == null) {
