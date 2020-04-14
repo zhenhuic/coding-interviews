@@ -2,6 +2,7 @@ import java.util.*;
 
 /**
  * 字符串的排列
+ * 全排列算法
  */
 public class Problem38 {
     /**
@@ -44,41 +45,42 @@ public class Problem38 {
      * 字典序排列算法
      */
     public ArrayList<String> Permutation2(String str) {
-        ArrayList<String> list = new ArrayList<String>();
-        if(str==null || str.length()==0){
+        ArrayList<String> list = new ArrayList<>();
+        if (str == null || str.length() == 0) {
             return list;
         }
         char[] chars = str.toCharArray();
         Arrays.sort(chars);
         list.add(String.valueOf(chars));
         int len = chars.length;
-        while(true){
-            int lIndex = len-1;
+        while (true) {
+            int lIndex = len - 1;
             int rIndex;
-            while(lIndex>=1 && chars[lIndex-1]>=chars[lIndex]){
+            while (lIndex >= 1 && chars[lIndex - 1] >= chars[lIndex]) {
                 lIndex--;
             }
-            if(lIndex == 0) break;
+            if (lIndex == 0) break;
             rIndex = lIndex;
-            while(rIndex<len && chars[rIndex]>chars[lIndex-1]){
+            while (rIndex < len && chars[rIndex] > chars[lIndex - 1]) {
                 rIndex++;
             }
-            swap(chars,lIndex-1,rIndex-1);
-            reverse(chars,lIndex);
+            swap(chars, lIndex - 1, rIndex - 1);
+            reverse(chars, lIndex);
             list.add(String.valueOf(chars));
         }
         return list;
     }
 
-    private void reverse(char[] chars,int k){
-        if(chars==null || chars.length<=k)
+    private void reverse(char[] chars, int k) {
+        if (chars == null || chars.length <= k) {
             return;
+        }
         int len = chars.length;
-        for(int i=0;i<(len-k)/2;i++){
-            int m = k+i;
-            int n = len-1-i;
-            if(m<=n){
-                swap(chars,m,n);
+        for (int i = 0; i < (len - k) / 2; i++) {
+            int m = k + i;
+            int n = len - 1 - i;
+            if (m <= n) {
+                swap(chars, m, n);
             }
         }
     }
